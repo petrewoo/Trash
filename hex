@@ -1,0 +1,24 @@
+#!/usr/bin/env python
+# -*- encoding: utf-8 -*-
+
+import argparse
+
+import clipboard
+
+
+def convert(pid):
+    java_pid = hex(pid)
+    clipboard.copy(java_pid)
+
+
+def get_args():
+    "This function get java pid from command line"
+
+    parser = argparse.ArgumentParser(
+        description="This is a program for jstack convert pid to hex")
+    parser.add_argument('pid', help='Java pid', type=int)
+    return vars(parser.parse_args())
+
+
+if __name__ == '__main__':
+    convert(**get_args())
